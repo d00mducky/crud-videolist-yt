@@ -1,7 +1,9 @@
 import React from 'react';
 
 // import child components
-import Header from './components/Header'
+import Header from './components/Header';
+import HeroVideo from './components/HeroVideo';
+import VideoList from './components/VideoList'
 
 
 class App extends React.Component {
@@ -25,6 +27,8 @@ class App extends React.Component {
     return(
       <div className='app-render'>
         <Header />
+        <HeroVideo />
+        <VideoList />
       </div>
     );
   };

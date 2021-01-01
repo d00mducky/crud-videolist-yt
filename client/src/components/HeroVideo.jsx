@@ -3,9 +3,9 @@ import React from 'react';
 const HeroVideo = () => {
 
   return (
-    <main className='hero-video-container'>
-
-    </main>
+    <section className='hero-video-container'>
+      <h1>Main video will show up here</h1>
+    </section>
   );
 };
 
