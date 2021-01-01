@@ -10,8 +10,9 @@ const VideoList = () => {
   return (
     <section className='video-list-container'>
       <h1>This is where the video list will be</h1>
-
-      <VideoEntry />
+      {videoEntries.map((video) => (
+        <VideoEntry />
+      ))}
     </section>
   );
 };
