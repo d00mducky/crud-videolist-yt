@@ -14,6 +14,13 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    let params = [25, 'surfing'];
+    this.props.searchYoutube(params, (results) => {
+      console.log(results);
+    });
+  }
+
   render() {
     return(
       <div className='app-render'>
