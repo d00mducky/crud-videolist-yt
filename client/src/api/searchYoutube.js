@@ -12,3 +12,5 @@ const searchYoutube = (params, callback) => {
     .then(result => callback(result))
     .catch(error => console.log('error', error));
 };
+
+export default searchYoutube;

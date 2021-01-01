@@ -5,7 +5,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      videos: []
+      videos: [],
+      watchLaterVideos: []
     };
   }
 
