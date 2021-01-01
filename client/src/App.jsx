@@ -1,4 +1,8 @@
-import React from 'react'
+import React from 'react';
+
+// import child components
+import Header from './components/Header'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +16,9 @@ class App extends React.Component {
 
   render() {
     return(
-      <h1>Hello React</h1>
+      <div className='app-render'>
+        <Header />
+      </div>
     );
   };
 }
