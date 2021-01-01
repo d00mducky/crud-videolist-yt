@@ -1,4 +1,5 @@
 import React from 'react';
+import YT_API_KEY from './youtube-config.js';
 
 const searchYoutube = (params, callback) => {
 
@@ -7,7 +8,7 @@ const searchYoutube = (params, callback) => {
     redirect: 'follow'
   };
 
-  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${params[0]}&q=${params[1]}&key=AIzaSyCUTP5QBD5yNtJqC_JIDuQflFfr7kDm9aE`, requestOptions)
+  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${params[0]}&q=${params[1]}&key=${YT_API_KEY}`, requestOptions)
     .then(response => response.text())
     .then(result => callback(result))
     .catch(error => console.log('error', error));
