@@ -45,10 +45,10 @@ input {
   grid-row: 3;
 
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .video-list-container h1 {
-  grid-column: 1/7;
+  grid-column: 1/6;
   grid-row: 1;
 }
