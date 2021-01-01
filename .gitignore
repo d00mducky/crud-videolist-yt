@@ -1,2 +1,4 @@
 node_modules
 dist/main.js
+
+client/src/api/youtube-config.js
