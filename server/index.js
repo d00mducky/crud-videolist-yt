@@ -15,6 +15,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/api/queries', controllers.queries.getAll);
 
 app.post('/api/videos/:searchQuery', controllers.videos.post);
 
