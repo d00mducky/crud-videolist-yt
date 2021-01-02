@@ -25,6 +25,21 @@ input {
 }
 
 /* * *************************************** */
+/* * FIRST SERVE STYLES START  */
+.first-serve-container {
+  margin-top: 5rem;
+
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.first-serve-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+
+
+/* * *************************************** */
 /* * HEADER STYLES START  */
 
 /* set the header to take up the entire first row  */

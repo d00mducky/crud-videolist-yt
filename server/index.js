@@ -1,8 +1,9 @@
 // * THIS IS THE ENTRYPOINT FOR THE SERVER (NODEMON -- see package.json scripts 'start')
 
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const app = express();
+const port = 3000;
+const controllers = require('./controllers');
 
 // this links our server to the dist folder, which will default to index.html when left like this:
 app.use(express.static('dist'));
@@ -10,6 +11,9 @@ app.use((req, res, next) => {
   console.log(req.method + ' request incurred at ' + req.path);
   next();
 });
+
+
+app.post('/api/videos/:searchQuery', controllers.videos.post);
 
 
 app.listen(port, () => {

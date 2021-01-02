@@ -1,5 +1,5 @@
 import React from 'react';
-import YT_API_KEY from './youtube-config.js';
+import YT_API_KEY from './youtube-config';
 
 const searchYoutube = (params, callback) => {
 
