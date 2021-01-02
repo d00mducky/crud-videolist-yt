@@ -1,10 +1,10 @@
 const models = require('../models');
 
 module.exports = {
-  post: function(req, res) {
+  create: function(req, res) {
     console.log(req.body.channelId)
     console.log(req.params)
 
-    res.send('oh hey :D')
+    res.send('videos contr')
   }
 };

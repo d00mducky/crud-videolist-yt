@@ -1,9 +1,13 @@
 const db = require('../database');
 
 module.exports = {
-  getAll: function(callback) {
+  read: function(callback) {
 
-    let queryString = '';
+    let queryString = 'select * from search_queries';
+
+    db.query(queryString, (error, results) => {
+      error ? console.error(error) : callback(results);
+    });
 
   }
 }

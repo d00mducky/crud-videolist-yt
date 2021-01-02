@@ -28,6 +28,18 @@ CREATE TABLE videos (
   FOREIGN KEY (queryId) REFERENCES search_queries (id)
 );
 
+CREATE TABLE watch_later (
+  id INT NOT NULL AUTO_INCREMENT,
+  videoId VARCHAR(100) NOT NULL,
+  queryTerm INT NOT NULL,
+  channelId VARCHAR(50) NOT NULL,
+  channelName VARCHAR(50) NOT NULL,
+  publishedAt VARCHAR(100) NOT NULL,
+  thumbnail VARCHAR(100) NOT NULL,
+  videoDesc VARCHAR(200) NOT NULL,
+  PRIMARY KEY (id),
+);
+
 -- * These are the first five results of a call to youtube's api for the query: react dev
 
 insert into search_queries (queryTerm) values ("react dev");

@@ -1,7 +1,7 @@
 const models = require('../models');
 
-module.exports = {
+exports.module = {
   getAll: function(req, res) {
-    res.send('queries contr');
+    res.send('watch later contr')
   }
 }

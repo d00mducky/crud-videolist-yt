@@ -1,14 +1,13 @@
 const db = require('../database');
 
-module.exports = {
+exports.module = {
+
   read: function(callback) {
 
-    let queryString = 'select * from videos';
+    let queryString = 'select * from watch_later';
 
     db.query(queryString, (error, results) => {
       error ? console.error(error) : callback(results);
     });
-
-  },
-
+  }
 }
