@@ -49,6 +49,16 @@ class App extends React.Component {
   userInputSubmitHandler(event) {
     event.preventDefault();
 
+    // * DB Check & Optional Serve
+    this.props.storeUserQuery(params, (results) => {
+      console.log(results);
+    });
+
+
+
+
+
+
     let params = [25, this.state.userInput, 'video'];
     this.props.searchYoutube(params, (results) => {
       this.setState({

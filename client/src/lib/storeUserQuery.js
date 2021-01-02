@@ -20,7 +20,7 @@ const storeUserQuery = (params, callback) => {
 
   fetch(`http://localhost:3000/api/videos/${params[5]}`, requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result => callback(result))
     .catch(error => console.log('error', error));
 }
 
