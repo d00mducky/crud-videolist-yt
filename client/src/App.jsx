@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      firstServe: false,
+      firstServe: true,
       userInput: '',
       heroVideo: {},
       videos: [],
@@ -25,14 +25,14 @@ class App extends React.Component {
     // * possible types are video, playlist and channels -- we should filter for these results in a later iteration
 
     // * Uncomment when ready to test
-    // let params = [25, 'react dev', 'video'];
-    // this.props.searchYoutube(params, (results) => {
+    let params = [25, 'react dev', 'video'];
+    this.props.searchYoutube(params, (results) => {
 
-    //   this.setState({
-    //     heroVideo: results.items[0],
-    //     videos: results.items
-    //   })
-    // });
+      this.setState({
+        heroVideo: results.items[0],
+        videos: results.items
+      })
+    });
 
     setTimeout(() => {console.log(this.state.videos); }, 3000);
   }

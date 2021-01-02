@@ -9,11 +9,14 @@ CREATE DATABASE video_db;
 USE video_db;
 
 -- create mysql table(s)
-CREATE TABLE videos (
-  id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(250) NOT NULL,
-  description VARCHAR(400) NULL,
-  PRIMARY KEY (id)
+CREATE TABLE video_searches (
+  searchTerm VARCHAR(100) NOT NULL,
+  channelName VARCHAR(50) NOT NULL,
+  channelId VARCHAR(50) NOT NULL,
+  publishedAt VARCHAR(50) NOT NULL,
+  thumbnail VARCHAR(100) NOT NULL,
+  videoDesc VARCHAR(200) NOT NULL,
+  PRIMARY KEY (searchTerm)
 );
 
 -- Add example data
