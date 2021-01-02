@@ -9,8 +9,6 @@ html {
 }
 
 body {
-  width: 90%;
-  margin: auto;
   background-color: rgb(31, 30, 33);
   color: whitesmoke;
   font-family: 'Poppins', sans-serif;
@@ -28,27 +26,61 @@ input {
 .header-container {
   grid-column: 1/7;
   grid-row: 1;
+  border-bottom: 1px solid whitesmoke;
+  position: sticky;
+}
+
+.header-container nav {
+  display: flex;
+  align-items: center;
+  min-height: 8vh;
+  width: 90%;
+  margin: auto;
+
+  flex-flow: row nowrap;
+}
+
+.header-container nav a {
+  /* flex: 2 1 10rem; */
+  flex: 25%;
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.header-form {
+  /* flex: 1 1 40rem; */
+  flex: 75%;
+  font-size: 1.2rem;
 }
 
 #header-logo {
   font-family: 'Pattaya', sans-serif;
-  font-size: 2.5em;
+  font-size: 2.5rem;
+  margin-right: 3rem;
 }
 
-.hero-video-container {
-  grid-column: 1/7;
-  grid-row: 2;
+.header-search-input {
+  /* margin-left: 5rem; */
+  padding: .5rem 0rem;
+  width: 85%;
 }
 
-.video-list-container {
-  grid-column: 1/7;
-  grid-row: 3;
-
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+.header-search-submit {
+  padding: .5rem 0rem;
+  width: 15%;
 }
 
-.video-list-container h1 {
-  grid-column: 1/6;
-  grid-row: 1;
+@media (max-width: 600px) {
+  #header-logo {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+  .header-search-input {
+    padding: .2rem 0rem;
+    width: 75%;
+  }
+  .header-search-submit {
+    padding: .2rem 0rem;
+    width: 25%;
+  }
 }
