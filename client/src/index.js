@@ -3,11 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // import api methods
-import searchYoutube from './api/searchYoutube.js';
+import searchYoutube from './api/searchYoutube';
+import storeUserQuery from './lib/storeUserQuery';
 
 // import main App component
 import App from './App';
 
 ReactDOM.render(
   <App
-    searchYoutube={searchYoutube} />, document.getElementById('app'));
+    searchYoutube={searchYoutube}
+    storeUserQuery={storeUserQuery} />, document.getElementById('app'));
