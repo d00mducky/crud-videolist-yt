@@ -5,18 +5,10 @@ import VideoEntry from './VideoEntry';
 
 const VideoList = (props) => {
 
-  let videoEntries = [];
-
-  (()=> {
-    for(let i = 0; i < 100; i++) {
-      videoEntries.push(i);
-    }
-  })();
-
   return (
     <section className='video-list-container'>
-      {videoEntries.map((video) => (
-        <VideoEntry videos={props.videos}/>
+      {props.videos.map((video) => (
+        <VideoEntry video={video}/>
       ))}
     </section>
   );

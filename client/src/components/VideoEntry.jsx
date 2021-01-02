@@ -1,12 +1,16 @@
 import React from 'react';
 
-const VideoEntry = ({videos}) => {
+const VideoEntry = ({video}) => {
 
-  if (videos.length) {
-    console.log(videos)
+  const thumbnailClickHandler = (event) => {
+
+    console.log('hey ! D:');
+  }
+
+  if (video.snippet) {
     return (
       <article className='video-entry-container'>
-        <img src={videos[0].snippet.thumbnails.default.url} alt="video thumbnail" srcset={videos[0].snippet.thumbnails.default.url} />
+        <img src={video.snippet.thumbnails.high.url} onClick={(event) => {thumbnailClickHandler(event)}} alt="video thumbnail" srcSet={video.snippet.thumbnails.high.url} />
         <h3>This will be a video entry</h3>
       </article>
     );

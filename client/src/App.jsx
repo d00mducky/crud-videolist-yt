@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      searchInput: '',
+      userInput: '',
       videos: [],
       watchLaterVideos: []
     };
@@ -29,12 +29,39 @@ class App extends React.Component {
     setTimeout(() => {console.log(this.state.videos); }, 3000);
   }
 
+  // * ***************************************
+  // * HEADER METHODS START
+
+  userInputChangeHandler(event) {
+    this.setState({
+      userInput: event.target.value
+    });
+  }
+
+  userInputSubmitHandler(event) {
+    event.preventDefault();
+
+    let params = [25, this.state.userInput];
+    this.props.searchYoutube(params, (results) => {
+      this.setState({
+        videos: results.items
+      });
+    });
+  }
+
+  // * HEADER METHODS END
+  // * ***************************************
+
+
   render() {
     return(
       <div className='app-render'>
-        <Header />
+        <Header
+          userInputChangeHandler={this.userInputChangeHandler.bind(this)}
+          userInputSubmitHandler={this.userInputSubmitHandler.bind(this)} />
         <HeroVideo />
-        <VideoList videos={this.state.videos}/>
+        <VideoList
+          videos={this.state.videos}/>
       </div>
     );
   };
