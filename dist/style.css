@@ -18,11 +18,16 @@ input {
   font-family: 'Poppins', sans-serif;
 }
 
+/* set up site with a six-column grid template */
 .app-render {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
 
+/* * *************************************** */
+/* * HEADER STYLES START  */
+
+/* set the header to take up the entire first row  */
 .header-container {
   grid-column: 1/7;
   grid-row: 1;
@@ -46,14 +51,12 @@ input {
 }
 
 .header-container nav a {
-  /* flex: 2 1 10rem; */
   flex: 25%;
   text-decoration: none;
   color: whitesmoke;
 }
 
 .header-form {
-  /* flex: 1 1 40rem; */
   flex: 75%;
   font-size: 1.2rem;
 }
@@ -65,7 +68,6 @@ input {
 }
 
 .header-search-input {
-  /* margin-left: 5rem; */
   padding: .5rem 0rem;
   width: 85%;
 }
@@ -75,6 +77,7 @@ input {
   width: 15%;
 }
 
+/* when the screen is small (phone-sized), make the logo font smaller and make the button size larger relative to the size of the input  */
 @media (max-width: 700px) {
   #header-logo {
     font-size: 1.5rem;
@@ -88,4 +91,34 @@ input {
     padding: .2rem 0rem;
     width: 25%;
   }
+}
+
+/* * HEADER STYLES END  */
+/* * *************************************** */
+/* * HERO VIDEO STYLES START */
+
+.hero-video-container {
+  /* take up the whole site width on the second row (under header) */
+  grid-column: 1/7;
+  grid-row: 2;
+
+  min-height: 55vh;
+}
+
+/* * HERO VIDEO STYLES END  */
+/* * *************************************** */
+/* * VIDEO LIST STYLES START */
+
+.video-list-container {
+  grid-column: 1/7;
+  grid-row: 3;
+
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.video-entry-container {
+  border: 2px solid whitesmoke;
+  /* shorthand for <flex grow> <flex shrink> <flex-basis> */
+  flex: 1 1 20rem;
 }
