@@ -8,7 +8,7 @@ const searchYoutube = (params, callback) => {
     redirect: 'follow'
   };
 
-  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${params[0]}&q=${params[1]}&key=${YT_API_KEY}`, requestOptions)
+  fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${params[0]}&q=${params[1]}&type=${params[2]}&key=${YT_API_KEY}`, requestOptions)
     .then(response => response.text())
     .then(result => callback(JSON.parse(result)))
     .catch(error => console.log('error', error));
