@@ -10,7 +10,7 @@ const searchYoutube = (params, callback) => {
 
   fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=${params[0]}&q=${params[1]}&key=${YT_API_KEY}`, requestOptions)
     .then(response => response.text())
-    .then(result => callback(result))
+    .then(result => callback(JSON.parse(result)))
     .catch(error => console.log('error', error));
 };
 
