@@ -69,12 +69,14 @@ class App extends React.Component {
     TODO in the future, we'll refactor this so that we can load initial page results from the user's selected content type
     */
 
-    // when the app loads, grab the most recent query from search_queries
-    this.props.getLastQuery((results) => {
-      console.log(results);
-    });
+   // when the app loads, grab the most recent query from search_queries
+   let lastSearch = {};
 
-
+   this.props.getLastQuery((results) => {
+    lastSearch.id = results[0].id;
+    lastSearch.searchTerm = results[0].searchTerm;
+   });
+  //  this.props.getAllVideos
 
 
 

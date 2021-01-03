@@ -9,7 +9,7 @@ const getAllQueries = (callback) => {
 
   fetch("http://localhost:3000/api/queries", requestOptions)
     .then(response => response.text())
-    .then(result => callback(result))
+    .then(result => callback(JSON.parse(result)))
     .catch(error => console.log('error', error));
 };
 
