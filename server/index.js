@@ -24,6 +24,8 @@ app.get('/api/queries/last', controllers.queries.getLast);
 // store a query into search_history table
 app.post('/api/queries', controllers.queries.storeQuery);
 
+app.post('/api/videos', controllers.videos.storeVideos);
+
 // get all videos from videos table from a given queryId
 app.get('/api/videos/:queryId', controllers.videos.getAll);
 

@@ -44,6 +44,15 @@ class App extends React.Component {
     });
   }
 
+  formatVideos(videos) {
+    let formattedVideos = [];
+    videos.map(video => {
+
+    });
+
+    return formattedVideos;
+  }
+
   // store
   storeQueryHandler(videoDetails, query) {
     let params = [
@@ -117,14 +126,22 @@ class App extends React.Component {
     if (this.state.searchHistory.includes(this.state.userInput)) {
       // if so, serve up the video data from videos table
 
+    } else {
+      // if new query, store it to search_queries table
+      this.props.storeUserQuery(this.state.userInput, (results) => {
+        console.log(results);
+      });
+
+      // invoke search on youtube API
+      this.props.searchYoutube([25, this.state.userInput, 'video'], (results) => {
+        console.log(JSON.stringify(results.items));
+        // store video data to videos table
+        this.setState({
+          videos: results.items,
+          heroVideo: results.items[0]
+        });
+      });
     }
-
-    // if new query, store it to search_queries table
-    // this.props.storeUserQuery
-    // invoke search on youtube API
-    // store video data to videos table
-
-
   }
 
   // * HEADER METHODS END

@@ -17,6 +17,14 @@ module.exports = {
     db.query(queryString, params, (error, results) => {
       error ? console.error(error) : callback(null, results);
     });
+  },
+  storeVideos: function (params, callback) {
+
+    let queryString = '';
+
+    db.query(queryString, params, (error, results) => {
+      error ? console.error(error) : callback(null, results);
+    });
   }
 
 }

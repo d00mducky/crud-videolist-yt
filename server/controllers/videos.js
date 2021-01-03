@@ -15,5 +15,14 @@ module.exports = {
     console.log(req.params)
 
     res.send('videos contr')
+  },
+
+  storeVideos: function(req, res) {
+
+    let params = [req.body.queryId, req.body.videoData];
+
+    models.videos.storeVideos(params, (error, results) => {
+      error ? console.log(error) : res.json(results);
+    });
   }
 };

@@ -1,12 +1,12 @@
 import React from 'react';
 
-const storeUserQuery = (params, callback) => {
-
+const storeVideos = (params, callback) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
   var urlencoded = new URLSearchParams();
-  urlencoded.append("searchTerm", params);
+  urlencoded.append("queryId", params[0]);
+  urlencoded.append("videoData", params[1]);
 
   var requestOptions = {
     method: 'POST',
@@ -17,8 +17,8 @@ const storeUserQuery = (params, callback) => {
 
   fetch("http://localhost:3000/api/queries", requestOptions)
     .then(response => response.text())
-    .then(result => callback(JSON.PARSE(result)))
+    .then(result => callback(JSON.parse(result)))
     .catch(error => console.log('error', error));
 }
 
-export default storeUserQuery;
+export default storeVideos;

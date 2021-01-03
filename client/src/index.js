@@ -10,6 +10,9 @@ import storeUserQuery from './lib/storeUserQuery';
 import getAllQueries from './lib/getAllQueries';
 import getLastQuery from './lib/getLastQuery';
 import getAllVideos from './lib/getAllVideos';
+import storeVideoEntry from './lib/storeVideoEntry';
+import storeVideos from './lib/storeVideos';
+
 
 // import main App component
 import App from './App';
@@ -20,4 +23,6 @@ ReactDOM.render(
     storeUserQuery={storeUserQuery}
     getAllQueries={getAllQueries}
     getLastQuery={getLastQuery}
-    getAllVideos={getAllVideos} />, document.getElementById('app'));
+    getAllVideos={getAllVideos}
+    storeVideoEntry={storeVideoEntry}
+    storeVideos={storeVideos} />, document.getElementById('app'));
