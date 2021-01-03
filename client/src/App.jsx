@@ -17,7 +17,8 @@ class App extends React.Component {
       heroVideo: {},
       videos: [],
       watchLaterVideos: [],
-      searchHistory: []
+      searchHistoryItems: [],
+      searchHistoryTerms: []
     };
   }
 
@@ -52,27 +53,36 @@ class App extends React.Component {
 
       // load videos in from the db based on the last searchTerm
       this.props.getAllVideos(lastSearch.id, (results) => {
-        let yaknow = results[0].videoData;
 
-        console.log(JSON.parse(results));
-        // this.setState({
-        //   videos: results
-        // })
+        let parsedVideos = JSON.parse(results[0].videoData);
+        this.setState({
+          videos: parsedVideos,
+          heroVideo: parsedVideos[0]
+        })
       });
     });
 
     // load the search history into state
     this.props.getAllQueries((results) => {
 
+      let allSearchItems = [];
       let allSearchTerms = [];
-      results.map(result => { allSearchTerms.push(result.searchTerm); });
+      results.map(result => {
+        let searchObj = {
+          id: result.id,
+          searchTerm: result.searchTerm
+        };
+        allSearchTerms.push(result.searchTerm);
+        allSearchItems.push(searchObj);
+      });
 
       this.setState({
-        searchHistory: allSearchTerms
+        searchHistoryItems: allSearchItems,
+        searchHistoryTerms: allSearchTerms
       });
     });
 
-    setTimeout(() => {console.log(this.state.searchHistory); }, 3000);
+    // setTimeout(() => {console.log(this.state.searchHistory); }, 3000);
   }
 
   // * ***************************************
@@ -90,12 +100,16 @@ class App extends React.Component {
     // check search history to see if we have searched this query before
     if (this.state.searchHistory.includes(this.state.userInput)) {
       // if so, serve up the video data from videos table
+      this.props.getAllVideos(this.state.userInput, (results) => {
+        console.log(results);
+      });
+
 
     } else { // if new query, store it to search_queries table
 
       let lastQuery = 0;
       this.props.storeQuery(this.state.userInput, (results) => {
-        console.log(results);
+        // console.log(results);
         lastQuery = results.insertId;
 
         // invoke search on youtube API
