@@ -98,15 +98,23 @@ class App extends React.Component {
     event.preventDefault();
 
     // check search history to see if we have searched this query before
-    if (this.state.searchHistory.includes(this.state.userInput)) {
+    if (this.state.searchHistoryTerms.includes(this.state.userInput)) {
       // if so, serve up the video data from videos table
-      this.props.getAllVideos(this.state.userInput, (results) => {
-        console.log(results);
+      let lastQuery = [...this.state.searchHistoryItems].length;
+      console.log(lastQuery);
+      this.props.getAllVideos(lastQuery, (results) => {
+
+        let parsedVideos = JSON.parse(results[0].videoData);
+        this.setState({
+          videos: parsedVideos,
+          heroVideo: parsedVideos[0]
+        });
       });
 
 
-    } else { // if new query, store it to search_queries table
+    } else { // if new query
 
+      // store the query to search_queries table
       let lastQuery = 0;
       this.props.storeQuery(this.state.userInput, (results) => {
         // console.log(results);
@@ -114,6 +122,13 @@ class App extends React.Component {
 
         // invoke search on youtube API
         this.props.searchYoutube([25, this.state.userInput, 'video'], (results) => {
+          // reset videos state
+          this.setState({
+            videos: results.items,
+            heroVideo: results.items[0]
+          });
+
+          // store API results in DB
           let params = [lastQuery, JSON.stringify(results.items)];
           this.props.storeVideos(params, (results) => {
             console.log(results);
