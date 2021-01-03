@@ -22,13 +22,13 @@ class App extends React.Component {
   }
 
   setSearchHistory() {
-    this.props.getAllQueries((results) => {
+    // this.props.getAllQueries((results) => {
 
-      console.log(results);
-      // this.setState({
-      //   searchHistory: []
-      // })
-    })
+    //   console.log(results);
+    //   // this.setState({
+    //   //   searchHistory: []
+    //   // })
+    // })
   }
 
   // query the db
@@ -58,8 +58,6 @@ class App extends React.Component {
       query
     ];
 
-    this.props.
-
     this.props.storeUserQuery(params, (results) => {
       console.log(results);
     });
@@ -84,22 +82,22 @@ class App extends React.Component {
     // * possible types are video, playlist and channels -- we should filter for these results in a later iteration
 
     // * Uncomment when ready to test
-    let params = [25, 'react dev', 'video'];
-    this.props.searchYoutube(params, (results) => {
+    // let params = [25, 'react dev', 'video'];
+    // this.props.searchYoutube(params, (results) => {
 
-      this.setState({
-        heroVideo: results.items[0],
-        videos: results.items
-      })
+    //   this.setState({
+    //     heroVideo: results.items[0],
+    //     videos: results.items
+    //   })
 
-      // store query to the DB
-      this.props.storeUserQuery(params, (results) => {
-        let params = []
+    //   // store query to the DB
+    //   this.props.storeUserQuery(params, (results) => {
+    //     let params = []
 
 
-        console.log(results);
-      });
-    });
+    //     console.log(results);
+    //   });
+    // });
 
 
 
@@ -130,23 +128,23 @@ class App extends React.Component {
 
     let params = []
 
-    // * DB Check & Optional Serve
-    this.props.storeUserQuery(params, (results) => {
-      console.log(results);
-    });
+    // // * DB Check & Optional Serve
+    // this.props.storeUserQuery(params, (results) => {
+    //   console.log(results);
+    // });
 
 
 
 
 
 
-    let params = [25, this.state.userInput, 'video'];
-    this.props.searchYoutube(params, (results) => {
-      this.setState({
-        heroVideo: results.items[0],
-        videos: results.items
-      });
-    });
+    // let params = [25, this.state.userInput, 'video'];
+    // this.props.searchYoutube(params, (results) => {
+    //   this.setState({
+    //     heroVideo: results.items[0],
+    //     videos: results.items
+    //   });
+    // });
   }
 
   // * HEADER METHODS END

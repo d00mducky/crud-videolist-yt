@@ -6,7 +6,7 @@ module.exports = {
     let queryString = 'select * from videos';
 
     db.query(queryString, (error, results) => {
-      error ? console.error(error) : callback(results);
+      error ? console.error(error) : callback(null, results);
     });
 
   },

@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom';
 
 // import api methods
 import searchYoutube from './api/searchYoutube';
+
+// import DB lib methods
 import storeUserQuery from './lib/storeUserQuery';
+import getAllQueries from './lib/getAllQueries';
 
 // import main App component
 import App from './App';
@@ -12,4 +15,5 @@ import App from './App';
 ReactDOM.render(
   <App
     searchYoutube={searchYoutube}
-    storeUserQuery={storeUserQuery} />, document.getElementById('app'));
+    storeUserQuery={storeUserQuery}
+    getAllQueries={getAllQueries} />, document.getElementById('app'));

@@ -17,6 +17,8 @@ app.use((req, res, next) => {
 
 app.get('/api/queries', controllers.queries.getAll);
 
+app.get ('/api/queries/last', controllers.queries.getLast);
+
 app.post('/api/videos/:searchQuery', controllers.videos.post);
 
 
