@@ -9,9 +9,9 @@ CREATE DATABASE video_db;
 USE video_db;
 
 -- create mysql table(s)
-CREATE TABLE search_queries (
+CREATE TABLE search_history (
   id INT NOT NULL AUTO_INCREMENT,
-  queryTerm VARCHAR(100) NOT NULL UNIQUE,
+  searchTerm VARCHAR(100) NOT NULL UNIQUE,
   PRIMARY KEY (id)
 );
 
@@ -25,24 +25,24 @@ CREATE TABLE videos (
   thumbnail VARCHAR(100) NOT NULL,
   videoDesc VARCHAR(200) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (queryId) REFERENCES search_queries (id)
+  FOREIGN KEY (queryId) REFERENCES search_history (id)
 );
 
 CREATE TABLE watch_later (
   id INT NOT NULL AUTO_INCREMENT,
   videoId VARCHAR(100) NOT NULL,
-  queryTerm INT NOT NULL,
+  queryId INT NOT NULL,
   channelId VARCHAR(50) NOT NULL,
   channelName VARCHAR(50) NOT NULL,
   publishedAt VARCHAR(100) NOT NULL,
   thumbnail VARCHAR(100) NOT NULL,
   videoDesc VARCHAR(200) NOT NULL,
-  PRIMARY KEY (id),
+  PRIMARY KEY (id)
 );
 
 -- * These are the first five results of a call to youtube's api for the query: react dev
 
-insert into search_queries (queryTerm) values ("react dev");
+insert into search_history (searchTerm) values ("react dev");
 
 insert into videos (videoId, queryId, channelId, channelName, publishedAt, thumbnail, videoDesc) values ("dGcsHMXbSOA", 1, "UClb90NQQcskPUGDIXsQEz5Q", "Dev Ed", "2019-04-10T15:45:00Z", "https://i.ytimg.com/vi/dGcsHMXbSOA/hqdefault.jpg", "Check out my courses and become more creative! https://developedbyed.com/ #javascript #react Today we are going to learn the basics of react. React is a ...");
 
