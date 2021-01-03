@@ -16,11 +16,70 @@ class App extends React.Component {
       userInput: '',
       heroVideo: {},
       videos: [],
-      watchLaterVideos: []
+      watchLaterVideos: [],
+      searchHistory: []
     };
   }
 
+  setSearchHistory() {
+    this.props.getAllQueries((results) => {
+
+      console.log(results);
+      // this.setState({
+      //   searchHistory: []
+      // })
+    })
+  }
+
+  // query the db
+  queryHandler(query, maxResults, type) {
+
+    let params = [query, maxResults, type];
+
+    this.props.searchYoutube(params, (results) => {
+      this.setState({
+        videos: results.items,
+        heroVideo: results.items[0]
+      });
+    });
+  }
+
+  // store
+  storeQueryHandler(videoDetails, query) {
+    let params = [
+      videoDetails.id,
+      videoDetails.videoId,
+      videoDetails.queryId,
+      videoDetails.channelId,
+      videoDetails.channelName,
+      videoDetails.publishedAt,
+      videoDetails.thumbnail,
+      videoDetails.videoDesc,
+      query
+    ];
+
+    this.props.
+
+    this.props.storeUserQuery(params, (results) => {
+      console.log(results);
+    });
+  }
+
   componentDidMount() {
+
+    /*
+    TODO in the future, we'll refactor this so that we can load initial page results from the user's selected content type
+    */
+    // when the app loads, grab the most recent query from search_queries
+
+
+
+
+
+
+
+
+
     // gets 25 entries from youtube on the query 'react dev'
     // * possible types are video, playlist and channels -- we should filter for these results in a later iteration
 
@@ -32,7 +91,17 @@ class App extends React.Component {
         heroVideo: results.items[0],
         videos: results.items
       })
+
+      // store query to the DB
+      this.props.storeUserQuery(params, (results) => {
+        let params = []
+
+
+        console.log(results);
+      });
     });
+
+
 
     setTimeout(() => {console.log(this.state.videos); }, 3000);
   }
@@ -48,6 +117,18 @@ class App extends React.Component {
 
   userInputSubmitHandler(event) {
     event.preventDefault();
+
+    // check search_queries table to see if we have searched this query before
+      // if so, serve up the video data from videos table
+    // if new query, store it to search_queries table
+    // invoke search on youtube API
+    // store video data to videos table
+
+
+
+
+
+    let params = []
 
     // * DB Check & Optional Serve
     this.props.storeUserQuery(params, (results) => {

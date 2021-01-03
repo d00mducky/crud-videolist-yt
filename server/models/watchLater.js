@@ -1,7 +1,6 @@
 const db = require('../database');
 
 exports.module = {
-
   read: function(callback) {
 
     let queryString = 'select * from watch_later';
