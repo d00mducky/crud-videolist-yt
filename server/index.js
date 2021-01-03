@@ -15,13 +15,17 @@ app.use((req, res, next) => {
   next();
 });
 
+// get all records from search_history table
 app.get('/api/queries', controllers.queries.getAll);
 
+// get last record from search_history table
 app.get ('/api/queries/last', controllers.queries.getLast);
 
-app.get('/api/videos', controllers.videos.getAll);
+// get all videos from videos table from a given queryId
+// app.get('/api/videos', controllers.videos.getAll);
 
-app.post('/api/videos/:searchQuery', controllers.videos.post);
+
+app.get('/api/videos/:queryId', controllers.videos.getAll);
 
 
 app.listen(port, () => {
