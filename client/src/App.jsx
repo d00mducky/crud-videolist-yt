@@ -97,17 +97,18 @@ class App extends React.Component {
   userInputSubmitHandler(event) {
     event.preventDefault();
 
-    // check search history to see if we have searched this query before
+    // if we have incurred this query before
     if (this.state.searchHistoryTerms.includes(this.state.userInput)) {
-      // if so, serve up the video data from videos table
+
+      // get the queryId associated with the user input
       let queryId = -1;
       [...this.state.searchHistoryItems].map((item) => {
         if (this.state.userInput == item.searchTerm) {
           queryId = item.id;
         }
       });
-      console.log(queryId)
 
+      // get all videos for the query from the database
       this.props.getAllVideos(queryId, (results) => {
 
         let parsedVideos = JSON.parse(results[0].videoData);
@@ -116,7 +117,6 @@ class App extends React.Component {
           heroVideo: parsedVideos[0]
         });
       });
-
 
     } else { // if new query
 
