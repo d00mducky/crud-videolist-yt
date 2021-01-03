@@ -6,12 +6,11 @@ import ReactDOM from 'react-dom';
 import searchYoutube from './api/searchYoutube';
 
 // import DB lib methods
-import storeUserQuery from './lib/storeUserQuery';
+import storeQuery from './lib/storeQuery';
+import storeVideos from './lib/storeVideos';
 import getAllQueries from './lib/getAllQueries';
 import getLastQuery from './lib/getLastQuery';
 import getAllVideos from './lib/getAllVideos';
-import storeVideoEntry from './lib/storeVideoEntry';
-import storeVideos from './lib/storeVideos';
 
 
 // import main App component
@@ -20,9 +19,8 @@ import App from './App';
 ReactDOM.render(
   <App
     searchYoutube={searchYoutube}
-    storeUserQuery={storeUserQuery}
+    storeQuery={storeQuery}
+    storeVideos={storeVideos}
     getAllQueries={getAllQueries}
     getLastQuery={getLastQuery}
-    getAllVideos={getAllVideos}
-    storeVideoEntry={storeVideoEntry}
-    storeVideos={storeVideos} />, document.getElementById('app'));
+    getAllVideos={getAllVideos} />, document.getElementById('app'));

@@ -1,12 +1,12 @@
 import React from 'react';
 
-const storeUserQuery = (params, callback) => {
+const storeQuery = (searchTerm, callback) => {
 
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
   var urlencoded = new URLSearchParams();
-  urlencoded.append("searchTerm", params);
+  urlencoded.append("searchTerm", searchTerm);
 
   var requestOptions = {
     method: 'POST',
@@ -21,4 +21,4 @@ const storeUserQuery = (params, callback) => {
     .catch(error => console.log('error', error));
 }
 
-export default storeUserQuery;
+export default storeQuery;

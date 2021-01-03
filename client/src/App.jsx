@@ -21,16 +21,6 @@ class App extends React.Component {
     };
   }
 
-  setSearchHistory() {
-    // this.props.getAllQueries((results) => {
-
-    //   console.log(results);
-    //   // this.setState({
-    //   //   searchHistory: []
-    //   // })
-    // })
-  }
-
   // query the db
   queryHandler(query, maxResults, type) {
 
@@ -41,34 +31,6 @@ class App extends React.Component {
         videos: results.items,
         heroVideo: results.items[0]
       });
-    });
-  }
-
-  formatVideos(videos) {
-    let formattedVideos = [];
-    videos.map(video => {
-
-    });
-
-    return formattedVideos;
-  }
-
-  // store
-  storeQueryHandler(videoDetails, query) {
-    let params = [
-      videoDetails.id,
-      videoDetails.videoId,
-      videoDetails.queryId,
-      videoDetails.channelId,
-      videoDetails.channelName,
-      videoDetails.publishedAt,
-      videoDetails.thumbnail,
-      videoDetails.videoDesc,
-      query
-    ];
-
-    this.props.storeUserQuery(params, (results) => {
-      console.log(results);
     });
   }
 
@@ -129,35 +91,21 @@ class App extends React.Component {
     if (this.state.searchHistory.includes(this.state.userInput)) {
       // if so, serve up the video data from videos table
 
-    } else {
-      // if new query, store it to search_queries table
+    } else { // if new query, store it to search_queries table
+
       let lastQuery = 0;
-      this.props.storeUserQuery(this.state.userInput, (results) => {
+      this.props.storeQuery(this.state.userInput, (results) => {
         console.log(results);
         lastQuery = results.insertId;
 
         // invoke search on youtube API
         this.props.searchYoutube([25, this.state.userInput, 'video'], (results) => {
-
-          console.log(results);
           let params = [lastQuery, JSON.stringify(results.items)];
           this.props.storeVideos(params, (results) => {
             console.log(results);
           });
-
-
-
-          //   console.log(JSON.stringify(results.items));
-          //   // store video data to videos table
-          //   this.setState({
-          //     videos: results.items,
-          //     heroVideo: results.items[0]
-          //   });
-          // });
-        })
+        });
       });
-
-
     }
   }
 
