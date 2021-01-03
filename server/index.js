@@ -19,6 +19,8 @@ app.get('/api/queries', controllers.queries.getAll);
 
 app.get ('/api/queries/last', controllers.queries.getLast);
 
+app.get('/api/videos', controllers.videos.getAll);
+
 app.post('/api/videos/:searchQuery', controllers.videos.post);
 
 

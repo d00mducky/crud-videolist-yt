@@ -10,5 +10,13 @@ module.exports = {
     });
 
   },
+  getAll: function(params, callback) {
+
+    let queryString = 'select * from videos where queryId = ?';
+
+    db.query(queryString, params, (error, results) => {
+      error ? console.error(error) : callback(null, results);
+    });
+  }
 
 }
