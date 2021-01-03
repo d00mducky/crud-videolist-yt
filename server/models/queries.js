@@ -18,6 +18,15 @@ module.exports = {
 
     db.query(queryString, (error, result) => {
       error ? console.error(error) : callback(null, result);
-    })
+    });
+  },
+
+  storeQuery: function(params, callback) {
+
+    let queryString = 'insert into search_history (searchTerm) values (?)';
+
+    db.query(queryString, params, (error, result) => {
+      error ? console.error(error) : callback(null, result);
+    });
   }
 }

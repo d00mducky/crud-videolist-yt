@@ -65,39 +65,40 @@ class App extends React.Component {
 
   componentDidMount() {
 
-  /*
-    TODO in the future, we'll refactor this so that we can load initial page results from the user's selected content type
+    /*
+      TODO in the future, we'll refactor this so that we can load initial page results from the user's selected content type
 
-    TODO in future iterations we'll also refactor to allow to display results by type (i.e. video, playlist or channels)
-  */
+      TODO in future iterations we'll also refactor to allow to display results by type (i.e. video, playlist or channels)
+    */
 
 
- // when the app loads, grab the most recent query from search_queries
- let lastSearch = {};
+    // when the app loads, grab the most recent query from search_queries
+    let lastSearch = {};
 
- this.props.getLastQuery((results) => {
-   lastSearch.id = results[0].id;
-   lastSearch.searchTerm = results[0].searchTerm;
+    this.props.getLastQuery((results) => {
+      lastSearch.id = results[0].id;
+      lastSearch.searchTerm = results[0].searchTerm;
 
-   // load videos in from the db based on the last searchTerm
-   this.props.getAllVideos(lastSearch.id, (results) => {
-     this.setState({
-       videos: results
-      })
+      // load videos in from the db based on the last searchTerm
+      this.props.getAllVideos(lastSearch.id, (results) => {
+        this.setState({
+          videos: results
+        })
+      });
     });
-  });
 
-  // load the search history into state
-  this.props.getAllQueries((results) => {
-    this.setState({
-      searchHistory: results
+    // load the search history into state
+    this.props.getAllQueries((results) => {
+
+      let allSearchTerms = [];
+      results.map(result => { allSearchTerms.push(result.searchTerm); });
+
+      this.setState({
+        searchHistory: allSearchTerms
+      });
     });
-  });
 
-
-
-
-    setTimeout(() => {console.log(this.state.videos); }, 3000);
+    setTimeout(() => {console.log(this.state.searchHistory); }, 3000);
   }
 
   // * ***************************************
@@ -112,35 +113,18 @@ class App extends React.Component {
   userInputSubmitHandler(event) {
     event.preventDefault();
 
-    // check search_queries table to see if we have searched this query before
+    // check search history to see if we have searched this query before
+    if (this.state.searchHistory.includes(this.state.userInput)) {
       // if so, serve up the video data from videos table
+
+    }
+
     // if new query, store it to search_queries table
+    // this.props.storeUserQuery
     // invoke search on youtube API
     // store video data to videos table
 
 
-
-
-
-    let params = []
-
-    // // * DB Check & Optional Serve
-    // this.props.storeUserQuery(params, (results) => {
-    //   console.log(results);
-    // });
-
-
-
-
-
-
-    // let params = [25, this.state.userInput, 'video'];
-    // this.props.searchYoutube(params, (results) => {
-    //   this.setState({
-    //     heroVideo: results.items[0],
-    //     videos: results.items
-    //   });
-    // });
   }
 
   // * HEADER METHODS END

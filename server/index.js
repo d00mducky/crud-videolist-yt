@@ -19,12 +19,12 @@ app.use((req, res, next) => {
 app.get('/api/queries', controllers.queries.getAll);
 
 // get last record from search_history table
-app.get ('/api/queries/last', controllers.queries.getLast);
+app.get('/api/queries/last', controllers.queries.getLast);
+
+// store a query into search_history table
+app.post('/api/queries', controllers.queries.storeQuery);
 
 // get all videos from videos table from a given queryId
-// app.get('/api/videos', controllers.videos.getAll);
-
-
 app.get('/api/videos/:queryId', controllers.videos.getAll);
 
 
