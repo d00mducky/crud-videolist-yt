@@ -8,6 +8,7 @@ import searchYoutube from './api/searchYoutube';
 // import DB lib methods
 import storeUserQuery from './lib/storeUserQuery';
 import getAllQueries from './lib/getAllQueries';
+import getLastQuery from './lib/getLastQuery';
 
 // import main App component
 import App from './App';
@@ -16,4 +17,5 @@ ReactDOM.render(
   <App
     searchYoutube={searchYoutube}
     storeUserQuery={storeUserQuery}
-    getAllQueries={getAllQueries} />, document.getElementById('app'));
+    getAllQueries={getAllQueries}
+    getLastQuery={getLastQuery} />, document.getElementById('app'));

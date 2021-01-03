@@ -17,7 +17,7 @@ module.exports = {
     let queryString = 'select * from search_history order by id desc limit 1';
 
     db.query(queryString, (error, result) => {
-      error ? console.error(error) : callback(null, results);
+      error ? console.error(error) : callback(null, result);
     })
   }
 }
