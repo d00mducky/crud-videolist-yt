@@ -100,9 +100,15 @@ class App extends React.Component {
     // check search history to see if we have searched this query before
     if (this.state.searchHistoryTerms.includes(this.state.userInput)) {
       // if so, serve up the video data from videos table
-      let lastQuery = [...this.state.searchHistoryItems].length;
-      console.log(lastQuery);
-      this.props.getAllVideos(lastQuery, (results) => {
+      let queryId = -1;
+      [...this.state.searchHistoryItems].map((item) => {
+        if (this.state.userInput == item.searchTerm) {
+          queryId = item.id;
+        }
+      });
+      console.log(queryId)
+
+      this.props.getAllVideos(queryId, (results) => {
 
         let parsedVideos = JSON.parse(results[0].videoData);
         this.setState({
