@@ -67,50 +67,33 @@ class App extends React.Component {
 
   /*
     TODO in the future, we'll refactor this so that we can load initial page results from the user's selected content type
+
+    TODO in future iterations we'll also refactor to allow to display results by type (i.e. video, playlist or channels)
   */
 
-  // when the app loads, grab the most recent query from search_queries
-  let lastSearch = {};
 
-  this.props.getLastQuery((results) => {
-    lastSearch.id = results[0].id;
-    lastSearch.searchTerm = results[0].searchTerm;
-    //  this.props.getAllVideos
-    this.props.getAllVideos(lastSearch.id, (results) => {
-      this.setState({
-        videos: results
+ // when the app loads, grab the most recent query from search_queries
+ let lastSearch = {};
+
+ this.props.getLastQuery((results) => {
+   lastSearch.id = results[0].id;
+   lastSearch.searchTerm = results[0].searchTerm;
+
+   // load videos in from the db based on the last searchTerm
+   this.props.getAllVideos(lastSearch.id, (results) => {
+     this.setState({
+       videos: results
       })
-      setTimeout(() => {
-        console.log(this.state.videos)
-      }, 2000)
     });
   });
 
+  // load the search history into state
+  this.props.getAllQueries((results) => {
+    this.setState({
+      searchHistory: results
+    });
+  });
 
-
-
-
-
-    // gets 25 entries from youtube on the query 'react dev'
-    // * possible types are video, playlist and channels -- we should filter for these results in a later iteration
-
-    // * Uncomment when ready to test
-    // let params = [25, 'react dev', 'video'];
-    // this.props.searchYoutube(params, (results) => {
-
-    //   this.setState({
-    //     heroVideo: results.items[0],
-    //     videos: results.items
-    //   })
-
-    //   // store query to the DB
-    //   this.props.storeUserQuery(params, (results) => {
-    //     let params = []
-
-
-    //     console.log(results);
-    //   });
-    // });
 
 
 
