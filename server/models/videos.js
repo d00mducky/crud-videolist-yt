@@ -20,7 +20,7 @@ module.exports = {
   },
   storeVideos: function (params, callback) {
 
-    let queryString = '';
+    let queryString = 'insert into videos (queryId, videoData) values (?, ?)';
 
     db.query(queryString, params, (error, results) => {
       error ? console.error(error) : callback(null, results);

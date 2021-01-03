@@ -90,9 +90,12 @@ class App extends React.Component {
 
       // load videos in from the db based on the last searchTerm
       this.props.getAllVideos(lastSearch.id, (results) => {
-        this.setState({
-          videos: results
-        })
+        let yaknow = results[0].videoData;
+
+        console.log(JSON.parse(results));
+        // this.setState({
+        //   videos: results
+        // })
       });
     });
 
@@ -128,19 +131,33 @@ class App extends React.Component {
 
     } else {
       // if new query, store it to search_queries table
+      let lastQuery = 0;
       this.props.storeUserQuery(this.state.userInput, (results) => {
         console.log(results);
+        lastQuery = results.insertId;
+
+        // invoke search on youtube API
+        this.props.searchYoutube([25, this.state.userInput, 'video'], (results) => {
+
+          console.log(results);
+          let params = [lastQuery, JSON.stringify(results.items)];
+          this.props.storeVideos(params, (results) => {
+            console.log(results);
+          });
+
+
+
+          //   console.log(JSON.stringify(results.items));
+          //   // store video data to videos table
+          //   this.setState({
+          //     videos: results.items,
+          //     heroVideo: results.items[0]
+          //   });
+          // });
+        })
       });
 
-      // invoke search on youtube API
-      this.props.searchYoutube([25, this.state.userInput, 'video'], (results) => {
-        console.log(JSON.stringify(results.items));
-        // store video data to videos table
-        this.setState({
-          videos: results.items,
-          heroVideo: results.items[0]
-        });
-      });
+
     }
   }
 
