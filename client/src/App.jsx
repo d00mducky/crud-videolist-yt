@@ -142,6 +142,10 @@ class App extends React.Component {
         });
       });
     }
+
+    // scroll to the top of the page, w/ behavior smooth
+    // see: https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   // * HEADER METHODS END
