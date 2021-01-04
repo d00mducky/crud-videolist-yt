@@ -21,13 +21,18 @@ app.get('/api/queries', controllers.queries.getAll);
 // get last record from search_history table
 app.get('/api/queries/last', controllers.queries.getLast);
 
+// get all videos from videos table from a given queryId
+app.get('/api/videos/:queryId', controllers.videos.getAll);
+
+// get a video entry from a given queryId and videoId
+// app.get('/api/videos/:queryId/:videoId', controllers.videos.getVideo);
+
 // store a query into search_history table
 app.post('/api/queries', controllers.queries.storeQuery);
 
+// store all videos returned from a youtube API search query
 app.post('/api/videos', controllers.videos.storeVideos);
 
-// get all videos from videos table from a given queryId
-app.get('/api/videos/:queryId', controllers.videos.getAll);
 
 
 app.listen(port, () => {
