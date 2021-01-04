@@ -149,7 +149,9 @@ class App extends React.Component {
   // * VIDEO LIST METHODS START
 
   changeHeroVideo(event) {
-    console.log(event.target.getAttribute('datakey'));
+    this.setState({
+      heroVideo: event.target.getAttribute('datakey')
+    });
   }
 
 
