@@ -18,6 +18,8 @@ const VideoList = (props) => {
       {props.videos.map((video) => (
         <VideoEntry
           video={video}
+          datakey={video.id.videoId}
+          changeHeroVideo={props.changeHeroVideo}
           key={video.id.videoId || video.id.playlistId || video.id.channelId} />
       ))}
     </section>

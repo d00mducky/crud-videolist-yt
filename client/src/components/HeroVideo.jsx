@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 
-const HeroVideo = (props) => {
+const HeroVideo = ({heroVideo}) => {
 
-  if (props.heroVideo.snippet) {
+  if (heroVideo.length > 0) {
     return (
       <section className='hero-video-container'>
-        <ReactPlayer url={'https://youtube.com/watch?v=' + props.heroVideo.id.videoId} />
+        <ReactPlayer url={'https://youtube.com/watch?v=' + heroVideo} />
         <h1>Main video will show up here</h1>
       </section>
     );

@@ -14,7 +14,7 @@ class App extends React.Component {
     this.state = {
       firstServe: true,
       userInput: '',
-      heroVideo: {},
+      heroVideo: '',
       videos: [],
       watchLaterVideos: [],
       searchHistoryItems: [],
@@ -30,7 +30,7 @@ class App extends React.Component {
     this.props.searchYoutube(params, (results) => {
       this.setState({
         videos: results.items,
-        heroVideo: results.items[0]
+        heroVideo: results.items[0].id.videoId
       });
     });
   }
@@ -57,7 +57,7 @@ class App extends React.Component {
         let parsedVideos = JSON.parse(results[0].videoData);
         this.setState({
           videos: parsedVideos,
-          heroVideo: parsedVideos[0]
+          heroVideo: parsedVideos[0].id.videoId
         })
       });
     });
@@ -114,7 +114,7 @@ class App extends React.Component {
         let parsedVideos = JSON.parse(results[0].videoData);
         this.setState({
           videos: parsedVideos,
-          heroVideo: parsedVideos[0]
+          heroVideo: parsedVideos[0].id.videoId
         });
       });
 
@@ -131,7 +131,7 @@ class App extends React.Component {
           // reset videos state
           this.setState({
             videos: results.items,
-            heroVideo: results.items[0]
+            heroVideo: results.items[0].id.videoId
           });
 
           // store API results in DB
@@ -146,6 +146,11 @@ class App extends React.Component {
 
   // * HEADER METHODS END
   // * ***************************************
+  // * VIDEO LIST METHODS START
+
+  changeHeroVideo(event) {
+    console.log(event.target.getAttribute('datakey'));
+  }
 
 
   render() {
@@ -163,7 +168,8 @@ class App extends React.Component {
             heroVideo={this.state.heroVideo}
           />
           <VideoList
-            videos={this.state.videos}/>
+            videos={this.state.videos}
+            changeHeroVideo={this.changeHeroVideo.bind(this)} />
         </div>
       );
     };
