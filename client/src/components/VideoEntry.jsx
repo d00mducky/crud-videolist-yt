@@ -2,11 +2,6 @@ import React from 'react';
 
 const VideoEntry = ({video, datakey, changeHeroVideo}) => {
 
-  const thumbnailClickHandler = (event) => {
-
-    console.log(event.target.getAttribute('datakey'));
-  }
-
   if (video.snippet) {
     return (
       <article className='video-entry-container' >

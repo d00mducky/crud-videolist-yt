@@ -3,6 +3,8 @@ import YT_API_KEY from './youtube-config';
 
 const searchYoutube = (params, callback) => {
 
+  console.log('New Search Query: ' + params[1]);
+
   var requestOptions = {
     method: 'GET',
     redirect: 'follow'

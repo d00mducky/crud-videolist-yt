@@ -43,7 +43,6 @@ class App extends React.Component {
       TODO in future iterations we'll also refactor to allow to display results by type (i.e. video, playlist or channels)
     */
 
-
     // when the app loads, grab the most recent query from search_queries
     let lastSearch = {};
 
@@ -54,6 +53,7 @@ class App extends React.Component {
       // load videos in from the db based on the last searchTerm
       this.props.getAllVideos(lastSearch.id, (results) => {
 
+        console.log(lastSearch);
         let parsedVideos = JSON.parse(results[0].videoData);
         this.setState({
           videos: parsedVideos,
@@ -64,7 +64,6 @@ class App extends React.Component {
 
     // load the search history into state
     this.props.getAllQueries((results) => {
-
       let allSearchItems = [];
       let allSearchTerms = [];
       results.map(result => {
@@ -81,8 +80,6 @@ class App extends React.Component {
         searchHistoryTerms: allSearchTerms
       });
     });
-
-    // setTimeout(() => {console.log(this.state.searchHistory); }, 3000);
   }
 
   // * ***************************************
@@ -120,10 +117,11 @@ class App extends React.Component {
 
     } else { // if new query
 
+      console.log('new query');
+
       // store the query to search_queries table
       let lastQuery = 0;
       this.props.storeQuery(this.state.userInput, (results) => {
-        // console.log(results);
         lastQuery = results.insertId;
 
         // invoke search on youtube API
@@ -156,6 +154,10 @@ class App extends React.Component {
     this.setState({
       heroVideo: event.target.getAttribute('datakey')
     });
+
+    // scroll to the top of the page, w/ behavior smooth
+    // see: https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
 
